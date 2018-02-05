@@ -1,0 +1,5 @@
+cv2 - pip install opencv-python
+matplotlib.pyplot - pip install matplotlib
+PIL - pip install pillow
+spacy - pip install -U spacy
+spacy - python -m spacy download en
