@@ -5,4 +5,4 @@
 Deep Neural Network - Automatic selection of the most optimal and relevant Thumbnails for Videos.
 
 
-
+<img src='imgs/results1.png'>
