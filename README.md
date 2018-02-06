@@ -53,6 +53,34 @@ sh scripts/download_pretrained_model.sh
 This will download a zipped version of the model (about 1.1 GB) to `data/models/densecap/densecap-pretrained-vgg16.t7.zip`, unpack it to `data/models/densecap/densecap-pretrained-vgg16.t7` (about 1.2 GB) and then delete the zipped version.
 
 
+## Datasets used
+
+1. Open Image Dataset 
+
+[https://github.com/openimages/dataset]
+
+
+2. Youtube 8M Dataset
+
+[https://research.google.com/youtube8m/]
+
+
+## References
+
+1. Dencecap 
+
+**[DenseCap: Fully Convolutional Localization Networks for Dense Captioning](http://cs.stanford.edu/people/karpathy/densecap/)**,
+<br>
+[Justin Johnson](http://cs.stanford.edu/people/jcjohns/)\*,
+[Andrej Karpathy](http://cs.stanford.edu/people/karpathy/)\*,
+[Li Fei-Fei](http://vision.stanford.edu/feifeili/),
+<br>
+
+
+2. Spacy
+
+[https://spacy.io/]
+
 
 
 
