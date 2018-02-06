@@ -15,6 +15,7 @@ This package provides -
 
 ## Luarocks Installation
 
+```bash
 luarocks install torch
 luarocks install nn
 luarocks install image
@@ -25,15 +26,17 @@ luarocks install https://raw.githubusercontent.com/jcjohnson/torch-rnn/master/to
 luarocks install cutorch
 luarocks install cunn
 luarocks install cudnn
+```
 
 ## PIP Installation
 
+```bash
 cv2 - pip install opencv-python
 matplotlib.pyplot - pip install matplotlib
 PIL - pip install pillow
 spacy - pip install -U spacy
 spacy - python -m spacy download en
-
+```
 
 ## Pretrained model
 
