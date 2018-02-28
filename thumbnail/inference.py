@@ -173,51 +173,67 @@ def relevance_score(temp1, head, cap_count, dense_count):
     return rel_list
 
 
-start_time = time.time()
-cnn_count = 10
-cap_count = 5
-dense_count = 10
-alpha = 0.3
-beta = 0.7
-final_count = 5
-title = u'Seahawks vs. Rams (Week 1) | Lockett vs. Austin Mini Replay | NFL FILMS'
-temp1 = "temp1"
-#vid = './cnn/video/sample4.mp4'
-vid = './test_video/sample3.mp4'
+def infer():
+    start_time = time.time()
+    cnn_count = 10
+    cap_count = 5
+    dense_count = 10
+    alpha = 0.3
+    beta = 0.7
+    final_count = 5
+    title = unicode(sys.argv[2], "utf-8")
+    #title = u'Seahawks vs. Rams (Week 1) | Lockett vs. Austin Mini Replay | NFL FILMS'
+    
+    temp1 = "candidate_thumbnail"
+    #vid = './cnn/video/sample4.mp4'
+    vid = sys.argv[1] 
+    #vid = './test_video/sample3.mp4'
+    
+    
+
+    if not os.path.exists(temp1):
+        os.makedirs(temp1)
+
+    cnn = video_input(vid, temp1, cnn_count)
+    #print cnn
+
+    densecap(temp1)
+    rel = relevance_score(temp1, title, cap_count, dense_count)
+
+    cnn_d = {}
+    for i in cnn:
+        cnn_d[i[1]] = i[0]
 
 
-if not os.path.exists(temp1):
-    os.makedirs(temp1)
+    final = []
 
-cnn = video_input(vid, temp1, cnn_count)
-#print cnn
-
-densecap(temp1)
-rel = relevance_score(temp1, title, cap_count, dense_count)
-
-cnn_d = {}
-for i in cnn:
-    cnn_d[i[1]] = i[0]
-
-
-final = []
-
-for i,j in rel:
-    if j in cnn_d:
-        score = (alpha * cnn_d[j]) + (beta * i) 
-        if len(final) == final_count:
-            top = heapq.heappop(final)
-            if top[0] < score:
-                heapq.heappush(final, (score, j))
+    for i,j in rel:
+        if j in cnn_d:
+            score = (alpha * cnn_d[j]) + (beta * i) 
+            if len(final) == final_count:
+                top = heapq.heappop(final)
+                if top[0] < score:
+                    heapq.heappush(final, (score, j))
+                else:
+                    heapq.heappush(final, top)       
             else:
-                heapq.heappush(final, top)       
-        else:
-            heapq.heappush(final, (score, j))
-            
+                heapq.heappush(final, (score, j))
 
-final.sort(reverse=True)
-for i in final:
-    print i
 
-print("--- %s seconds ---" % (time.time() - start_time))
+    final.sort(reverse=True)
+    for i in final:
+        print i
 
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+
+    cwd = os.getcwd()
+    dir_path = cwd 
+    #print dir_path
+    os.system("rm -r " + dir_path + "/vis/data/")
+    
+    os.makedirs(dir_path + "/vis/data/")
+
+
+if __name__ == '__main__':
+    infer()
