@@ -65,6 +65,20 @@ This will download a zipped version of the model (about 1.1 GB) to `data/models/
 [https://research.google.com/youtube8m/]
 
 
+## Steps to Run the code
+
+1. Clone the thumbnails-for-videos repo.
+2. Luarocks Installation
+3. PIP Installation
+4. Download the CNN model from the link provided in the Pretrained model section
+5. Unzip the CNN model and move it to the following folder -  thumbnail/cnn/model/
+6. Download the DenseCap model by running the script provided in the Pretrained model section.
+7. If there is no error in any of the above steps then the code is ready to generate thumbnails for any video.
+8. To generate the thumbnails, run the following code under the thumbnail folder - 
+python inference.py [path to the video] [video title or description]
+9. The candidate thumbnails will be generated in the following folder - thumbnail/candidate_thumbnail/
+
+
 ## References
 
 1. Dencecap 
@@ -80,6 +94,8 @@ This will download a zipped version of the model (about 1.1 GB) to `data/models/
 2. Spacy
 
 [https://spacy.io/]
+
+
 
 
 
